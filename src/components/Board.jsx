@@ -58,16 +58,17 @@ function Board() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <form onSubmit={handleCreateBoard} className="flex flex-col space-y-3 w-1/3 mx-auto mt-5">
+    <div className="flex flex-col items-center justify-center p-6 bg-gray-100 min-h-screen">
+      <form onSubmit={handleCreateBoard} className="flex flex-col space-y-4 w-full max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-xl font-bold text-center">Yangi Board Yarating</h2>
         <input
           type="text"
           ref={boardNameRef}
-          placeholder="Enter board name"
-          className="input border rounded-md p-2"
+          placeholder="Board nomi"
+          className="input border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <select ref={boardColorRef} className="input border rounded-md p-2">
-          <option value="" disabled selected>Select board color</option>
+        <select ref={boardColorRef} className="input border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="" disabled selected>Rangni tanlang</option>
           <option value="red">Red</option>
           <option value="green">Green</option>
           <option value="orange">Orange</option>
@@ -75,25 +76,25 @@ function Board() {
         </select>
         <textarea
           ref={boardDescRef}
-          placeholder="Enter description"
-          className="textarea resize-none border rounded-md p-2"
+          placeholder="Tavsif"
+          className="textarea resize-none border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button type="submit" className="btn bg-blue-600 text-white rounded-md p-2 hover:bg-blue-700">Create</button>
+        <button type="submit" className="btn bg-blue-600 text-white rounded-md p-3 hover:bg-blue-700 transition">Yasash</button>
       </form>
 
-      <div className="mt-8">
+      <div className="mt-8 w-full max-w-4xl">
         <h2 className="text-lg font-bold mb-4 text-center">Boardlar ro'yxati:</h2>
-        <ul className="flex flex-wrap justify-center space-x-4 space-y-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {boards.length > 0 ? (
             boards.map((board) => (
-              <li key={board.id} className="flex flex-col p-4 border border-gray-900 rounded shadow-md w-1/4 max-w-xs">
-                <h3 className="font-semibold">{board.name}</h3>
-                <h4 className="text-sm text-gray-500">{board.color}</h4>
+              <li key={board.id} className="flex flex-col p-4 border border-gray-300 rounded-lg shadow-md bg-white hover:shadow-lg transition">
+                <h3 className="font-semibold text-lg">{board.name}</h3>
+                <h4 className="text-sm text-gray-600">{board.color}</h4>
                 <p className="text-gray-700">{board.description}</p>
               </li>
             ))
           ) : (
-            <p>Hozircha boardlar mavjud emas.</p>
+            <p className="text-center text-gray-500">Hozircha boardlar mavjud emas.</p>
           )}
         </ul>
       </div>
